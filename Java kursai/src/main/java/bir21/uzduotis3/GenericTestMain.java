@@ -2,10 +2,6 @@ package bir21.uzduotis3;
 
 public class GenericTestMain {
     public static void main(String[] args) {
- //       System.out.println(biggerOfTwo(2, 5));
- //       System.out.println(biggerOfTwo(3.5, -5.2));
- //       System.out.println(biggerOfTwo("abc", "cde"));
-
 
         GenericTest<?>[] arr = new GenericTest[3];
 
@@ -17,7 +13,7 @@ public class GenericTestMain {
                 arr) {
             System.out.println(x.getValue().getClass().getSimpleName() + ": " + x.getValue());
         }
-
+    }
 /*
         GenericTest<String> ob1 = new GenericTest<>("Bla");
         GenericTest<String> ob2 = new GenericTest<>("Sha");
@@ -60,7 +56,7 @@ public class GenericTestMain {
         }
         return 0;
 */
-    }
+
 
 //    public static <T extends Comparable> T biggerOfTwo(T first, T second) {
 //        if (first.compareTo(second) >= 0) {

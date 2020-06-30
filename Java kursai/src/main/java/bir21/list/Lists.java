@@ -1,7 +1,6 @@
 package bir21.list;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Lists {
@@ -15,14 +14,12 @@ public class Lists {
         list.add("fourth");
         list.add("fifth");
         list.remove("third");
-        for(int i = 0; i < list.size(); i++) {
+        for (String listElement : list) {
             // array[i]
-            String listElement = list.get(i);
             System.out.println(listElement);
         }
-        Iterator<String> iterator = list.iterator();
-        while(iterator.hasNext()) {
-            System.out.println(iterator.next());
+        for (String s : list) {
+            System.out.println(s);
         }
     }
 }

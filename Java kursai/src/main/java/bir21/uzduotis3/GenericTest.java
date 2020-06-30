@@ -1,7 +1,6 @@
 package bir21.uzduotis3;
 
 public class GenericTest<V> {
-//public class GenericTest<V> implements Comparable {
     private final V value;
 
     public GenericTest(V value) {
@@ -11,7 +10,7 @@ public class GenericTest<V> {
     public V getValue() {
         return value;
     }
-
+}
 //    public int biggerOfTwo(GenericTest o1, GenericTest o2) {
 //        if (o1.value instanceof Integer && o2.value instanceof Integer) {
 //            return Integer.compare((int) o1.value, (int) o2.value);
@@ -23,4 +22,4 @@ public class GenericTest<V> {
 //        return 0;
 //    }
 
-}
+

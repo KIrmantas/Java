@@ -3,7 +3,7 @@ package myListWithArray;
 public class MyListMain {
     public static void main(String[] args) {
         int size = 7;
-        MyList myList = new MyList(-2, -5);
+        MyList myList = new MyList();
         for (int i = 0; i < size; i++) {
             myList.add(2 * (size - i) + 1);
         }

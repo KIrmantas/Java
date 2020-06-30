@@ -33,7 +33,8 @@ public class MyList{
         if (list == null) {
             System.out.println("MyList tuscias");
         } else if (index < 0 || index >= size) {
-            System.out.println("Indeksas uz masyvo ribu");
+            throw new IndexOutOfBoundsException();
+//            System.out.println("Indeksas uz masyvo ribu");
         } else {
             Integer[] temp = new Integer[size - 1];
             int i = 0;
@@ -53,17 +54,22 @@ public class MyList{
     }
 
     public int getIndexOf(int value) {
-        if (list == null) {
+        if (size == 0) {
             return -1;
         }
 
-        int i = 0;
-        while (i < size) {
+        for (int i = 0; i < size; i++) {
             if (list[i] == value) {
                 return i;
             }
-            i++;
         }
+//        int i = 0;
+//        while (i < size) {
+//            if (list[i] == value) {
+//                return i;
+//            }
+//            i++;
+//        }
         return -1;
     }
 
