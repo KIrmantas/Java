@@ -2,11 +2,9 @@ package MyLinkedListGeneric;
 
 // Sukurti savo List implementaciją kuri būtų paremta LinkedList principu,
 // t.y. -> kiekvienas elementas turi nuorodą (property) į sekantį elementą
-
-
+//  Padaryti šitą List generic
 
 public class myLinkedListGenericMain {
-    private MyLinkedListGeneric<Integer> list;
 
     public static void main(String[] args) {
         MyLinkedListGeneric<Integer> list = new MyLinkedListGeneric<>(11, 222);

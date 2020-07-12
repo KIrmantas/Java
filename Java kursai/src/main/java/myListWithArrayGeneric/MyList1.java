@@ -11,6 +11,7 @@ public class MyList1<T> {
         this.size = 0;
         this.list = new Object[size];
     }
+
     @SafeVarargs
     public MyList1(T... arg) {
         this.size = arg.length;
