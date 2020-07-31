@@ -5,7 +5,7 @@ There is a significant extra amount of 500, 20 and 2 nominal values
 therefore the strategy is to first use those nominals and only then what is left
 (for example 601 = 500 + 20 x5 +1; 999 = 500 + 20 x 29 + 2 £ 9 + 1) Design such a system
  */
-public class Exchanger {
+public class Exchanger_test {
 
     private static final int[] NOMINALS = {500, 20, 2};
 
@@ -15,13 +15,13 @@ public class Exchanger {
         System.out.print("Exchangeable amount: ");
         int exchangeableSum = sc.nextInt();
 
-        StringBuilder exchangedNominals = exchange(exchangeableSum);
+        StringBuilder exchangedNominals = exchange1(exchangeableSum);
 
         System.out.println(exchangeableSum + " = " + exchangedNominals);
     }
 
-    private static StringBuilder exchange(final int exchangeableSum) {
-        StringBuilder exchangedNominals = new StringBuilder("");
+    private static StringBuilder exchange1(final int exchangeableSum) {
+        StringBuilder exchangedNominals = new StringBuilder();
         int exchangeableAmount = exchangeableSum;
 
         for (int nominal : NOMINALS) {
