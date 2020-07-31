@@ -24,5 +24,4 @@ public class Exchange {
         }
         return exchangedNominals.toString();
     }
-
 }
