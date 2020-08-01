@@ -1,4 +1,4 @@
-package liepa26.adapter;
+package liep26.adapter;
 
 public class AdapterFromVgaToHdmi extends ConnectorHdmi{
     private final ConnectorVga vga;

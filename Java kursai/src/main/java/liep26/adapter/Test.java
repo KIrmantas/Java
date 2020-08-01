@@ -1,4 +1,4 @@
-package liepa26.adapter;
+package liep26.adapter;
 
 public class Test {
     public static void main(String[] args) {

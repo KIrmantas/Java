@@ -1,4 +1,4 @@
-package liepa26.builder;
+package liep26.builder;
 
 public class GiftBuilder {
     private final Gift gift;

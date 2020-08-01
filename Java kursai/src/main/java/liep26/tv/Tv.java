@@ -1,4 +1,4 @@
-package liepa26.tv;
+package liep26.tv;
 
 public class Tv {
 

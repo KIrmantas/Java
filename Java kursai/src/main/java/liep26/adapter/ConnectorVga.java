@@ -1,4 +1,4 @@
-package liepa26.adapter;
+package liep26.adapter;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Random;

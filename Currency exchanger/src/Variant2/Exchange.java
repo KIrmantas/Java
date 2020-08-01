@@ -13,19 +13,20 @@ public class Exchange extends BanknotesExchange {
     public void exchangeToBanknotes(Customer customer) {
 
         Integer sum = customer.getAvailableAmount();
-        TreeMap<Integer, Integer> existingChangersBanknotes = exchanger.getExistingBanknotes();
-        TreeMap<Integer, Integer> getBanknotes = new TreeMap<>();
+        TreeMap<Nominals, Integer> existingChangersBanknotes = exchanger.getAvailableBanknotes();
+        TreeMap<Nominals, Integer> getBanknotes = new TreeMap<>();
 
-        for (Integer nominal : existingChangersBanknotes.keySet()) {
+        for (Nominals nominal : existingChangersBanknotes.keySet()) {
             if (existingChangersBanknotes.get(nominal) > 0) {
-                Integer quantityObtained = Math.min(existingChangersBanknotes.get(nominal), sum / nominal);
+                Integer quantityObtained = Math.min(existingChangersBanknotes.get(nominal),
+                        sum / nominal.getNominal());
                 if (quantityObtained > 0) {
                     getBanknotes.put(nominal, quantityObtained);
-                    sum -= quantityObtained * nominal;
+                    sum -= quantityObtained * nominal.getNominal();
                 }
             }
         }
-        customer.setBanknotesAvailable(getBanknotes);
+        customer.setGetBanknotes(getBanknotes);
     }
 
 }
