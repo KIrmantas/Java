@@ -1,0 +1,323 @@
+CREATE DATABASE sda3_university CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+use sda3_university;
+
+-- rodo visas leneteles
+show tables;
+
+-- sukuria lentele
+create table person
+(
+    id            bigint unsigned auto_increment primary key,
+    name          varchar(50) not null,
+    surname       varchar(50) not null,
+    gender        varchar(25) not null,
+    date_of_birth date        not null
+);
+
+-- inicijuoja lenteles lauku rodyma
+describe person;
+
+-- istrina stulpeli
+alter table person
+    drop column gender;
+
+-- prideda nauja stulpeli
+alter table person
+    add gender varchar(25) not null;
+
+-- modifikuoja nurodyta stulpeli
+alter table person
+    modify gender varchar(50) not null;
+
+-- istrina leneteles
+drop table person;
+
+create table employee
+(
+    id            bigint unsigned auto_increment primary key,
+    firstName     varchar(50)  not null,
+    lastName      varchar(50)  not null,
+    dateOfBirth   date         not null,
+    postalAddress varchar(100) not null
+);
+
+describe employee;
+
+alter table employee
+    add phoneNumber varchar(12);
+alter table employee
+    add email varchar(250) not null;
+alter table employee
+    add salary decimal(10, 2) not null;
+
+alter table employee
+    drop postalAddress;
+alter table employee
+    drop phoneNumber;
+alter table employee
+    add phoneNumber varchar(20);
+
+create table employeeAddresse
+(
+    country varchar(50)
+);
+
+drop table employeeAddresse;
+
+-- uzpildome lentele duomenimis
+insert into person (name, surname, gender, date_of_birth)
+    value ('Jonas', 'Jonaitis', 'male', '1978-12-07');
+insert into person (name, surname, gender, date_of_birth)
+    value ('Petras', 'Petraitis', 'male', '1994-04-25');
+
+select *
+from person;
+
+update person
+set date_of_birth = '1981-07-04';
+
+delete
+from person;
+
+-- 2) ------
+
+insert into employee (firstName, lastName, dateOfBirth, phoneNumber, email, salary)
+    value ('John', 'Johnson', '1975-01-01', '0-800-800-314', 'john@johnson.com', 1000);
+
+select *
+from employee;
+
+update employee
+set dateOfBirth = '1980-01-01'
+where id = 1;
+
+delete
+from employee;
+
+insert into employee (firstName, lastName, dateOfBirth, phoneNumber, email, salary)
+values ('John', 'Johnson', '1975-01-01', '0-800-800-888', 'john@johnson.com', 1000),
+       ('James', 'Jameson', '1985-02-02', '0-800-800-999', 'james@jameson.com', 2000),
+       ('John', 'Johnson', '1995-03-03', '0-800-800-999', 'james@jameson.com', 3000),
+       ('James', 'Johnson', '2005-04-04', '0-800-800-999', 'james@jameson.com', 1200),
+       ('John', 'Jameson', '1980-12-02', '0-800-800-999', 'james@jameson.com', 1800);
+
+insert into person (name, surname, gender, date_of_birth)
+values ('Jonas', 'Jonaitis', 'MALE', '1989-04-01');
+insert into person (name, surname, gender, date_of_birth)
+values ('Asta', 'Astatite', 'FEMALE', '1994-10-08');
+insert into person (name, surname, gender, date_of_birth)
+values ('Petras', 'Petraitis', 'MALE', '2000-03-14');
+insert into person (name, surname, gender, date_of_birth)
+values ('Jonas', 'Petraitis', 'MALE', '1992-11-08');
+
+select *
+from person;
+
+-- parodom dali lenteles
+select name, date_of_birth
+from person;
+select *
+from person
+where gender = 'MALE';
+
+select name, date_of_birth
+from person
+where date_of_birth > '1990-01-01';
+
+select name, surname
+from person
+where name in ('Jonas', 'Petras');
+
+select name, surname, date_of_birth
+from person
+where surname like '%is';
+
+select name, date_of_birth
+from person
+where date_of_birth between '1990-01-01' and '2001-01-01';
+
+select *
+from person
+where name = 'Jonas'
+  and surname = 'Petraitis';
+
+select *
+from person
+where name = 'Jonas'
+   or surname = 'Petraitis';
+
+select *
+from person
+where not surname = 'Petraitis';
+
+select avg(date_of_birth)
+from person;
+
+select count(*)
+from person;
+
+select max(date_of_birth)
+from person;
+
+select name, max(date_of_birth)
+from person;
+
+select count(*)
+from person;
+
+-- 31 psl
+select *
+from employee;
+
+select firstName, lastName
+from employee;
+
+select *
+FROM employee
+where lastName = 'Johnson';
+
+select *
+from employee
+where lastName like 'J%';
+
+
+select *
+from employee
+where firstName like '%me%';
+
+select *
+from employee
+where dateOfBirth > '1980-01-01';
+
+select *
+from employee
+where dateOfBirth > '1980-01-01'
+  and firstName = 'John';
+
+select *
+from employee
+where dateOfBirth > '1980-01-01'
+   or firstName = 'John';
+
+select *
+from employee
+where not lastName = 'Johnson';
+
+select max(salary)
+from employee;
+
+select min(salary)
+from employee;
+
+select avg(salary)
+from employee;
+
+select *
+from person;
+
+select name, count(gender)
+from person
+group by name;
+
+select *
+from employee;
+
+select firstName, count(firstName), avg(salary)
+from employee
+group by firstName;
+
+create table lectory
+(
+    id        bigint unsigned auto_increment primary key,
+    level     varchar(50)            not null,
+    salary    double(10, 2) unsigned not null,
+    person_id bigint unsigned        not null,
+    constraint fk_lecturer_person
+        foreign key (person_id)
+            references person (id)
+);
+
+drop table lectory;
+describe lectory;
+show tables;
+
+insert into  lectory (level, salary, person_id)
+VALUES ('Lecturer', 300, 4),
+       ('Doctor', 800, 5);
+
+select * from lectory, person where lectory.person_id = person.id;
+
+select *
+from lectory;
+
+insert into employee (firstName, lastName, dateOfBirth, phoneNumber, email, salary)
+values ('Julie', 'Juliette', '1990-01-01', '0-800-900-111', 'julie@juliette.com', 500),
+        ('Sofie', 'Sophia', '1987-02-03', '0-800-900-222', 'sofie@sophia.com', 1700);
+
+describe employee;
+select * from employee;
+
+create table department (
+    id bigint unsigned auto_increment primary key ,
+    name varchar(50) not null
+);
+
+insert into department (name)
+values ('HR'), ('Finance'), ('administration');
+
+insert into department (name)
+values ('administration');
+
+
+
+select * from department;
+
+alter table employee
+add departament_id bigint;
+
+alter table employee
+    modify departament_id bigint unsigned;
+
+alter table employee
+add constraint fk_employee_department
+foreign key (departament_id)
+references department(id);
+
+describe employee;
+
+insert into employee (firstName, lastName, dateOfBirth, email, salary, departament_id)
+values ('Ruta', 'Kalvaite', '1999-12-24', 'ruta@kalvaite.lt', 1700, 1);
+
+select * from employee;
+
+update employee
+set departament_id = 1
+where firstName = 'John';
+
+update employee
+set departament_id = 2
+where firstName = 'James';
+
+update employee
+set departament_id = 3
+where departament_id is null;
+
+delete from department
+where name = 'HR';
+
+update employee
+set dateOfBirth = '1980-01-01'
+where firstName = 'John' and dateOfBirth = '1975-01-01';
+
+ Create method which reverses a number, e.g.
+reverse(123) -> returns 321
+You cannot use String type
+
+
+create 3 tables (choose your own domain):
+table b has a reference to table a and c
+table c has a reference to table a
+
+create a method which groups List<Person> by any method, e.g. by name, surname, age, etc.
+Hint: generic types

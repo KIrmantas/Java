@@ -1,7 +1,6 @@
 package lt.irmantas.fundamentals.conding.tic_tac_toe;
 
-import java.util.Random;
-import java.util.Scanner;
+
 
 public class Play {
 
