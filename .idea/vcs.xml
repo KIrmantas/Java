@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Currency exchanger" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Eschool" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Rugpucio_08/sda-tasks" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/devskiller-sample-maven-calculator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/eschool3" vcs="Git" />
   </component>
 </project>
